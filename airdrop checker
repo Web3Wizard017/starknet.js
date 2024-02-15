@@ -1,0 +1,24 @@
+import datetime
+
+# Function to check if a user meets airdrop criteria
+def check_airdrop_eligibility(user_activity, transaction_count):
+    # Check if the user has been active for at least two months
+    two_months_ago = datetime.datetime.now() - datetime.timedelta(days=60)
+    if user_activity['last_activity'] >= two_months_ago:
+        # Check if the user has at least five transactions
+        if transaction_count >= 5:
+            return True
+    return False
+
+# Example data (replace this with actual data retrieval from the blockchain)
+user_activity_data = {
+    'last_activity': datetime.datetime(2022, 12, 1),  # Replace with actual last activity timestamp
+}
+
+user_transaction_count = 7  # Replace with actual transaction count
+
+# Check eligibility
+if check_airdrop_eligibility(user_activity_data, user_transaction_count):
+    print("Congratulations! You are eligible for the airdrop.")
+else:
+    print("Sorry, you do not meet the eligibility criteria for the airdrop.")
